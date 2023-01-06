@@ -1,0 +1,78 @@
+import sqlite3
+from sqlite3 import OperationalError
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+
+# Connect to sqlite db
+conn = sqlite3.connect('weathers.db')
+c = conn.cursor()
+
+# Selenium set up
+chrome_options = Options()
+chrome_options.add_experimental_option("detach", True)
+s = Service('Chromedriver PATH')
+driver = webdriver.Chrome(service=s, options=chrome_options)
+
+# Selenium open url
+url = 'https://www.accuweather.com/en/us/fayetteville/30214/december-weather/332446'
+driver.get(url)
+
+# find the highs
+temperature_highs = driver.find_elements(By.CLASS_NAME, 'high')
+temperature_highs_list = [temperature_highs[t] for t in range(len(temperature_highs))]
+print([temperature_highs_list[x].text for x in range(len(temperature_highs))])
+
+# date
+date = driver.find_elements(By.CLASS_NAME, 'date')
+date_list = [date[t] for t in range(len(date))]
+print([date_list[x].text for x in range(len(date))])
+
+# Try to create a table, if one exists then the program will pass.
+try:
+    c.execute('''CREATE TABLE Temps (
+        Date TEXT,
+        Temp TEXT
+    )''')
+
+except OperationalError:
+    print('Table already exists.')
+
+# Add values to db
+
+date_check = c.execute('SELECT Temp FROM sqlite_master WHERE TYPE="table"')
+date_check = date_check.fetchall()
+
+for x in date_check:
+    if date_list[x] != date_check:
+        c.execute(
+            f'''INSERT INTO Temp (
+                Date, 
+                Temp
+                ) VALUES (
+                "{date_list[x].text}",
+                "{temperature_highs_list[x].text}"
+            )''')
+
+
+        conn.commit()
+
+# algo
+
+c.execute('SELECT Temp FROM sqlite_master WHERE TYPE="table"')
+all_temps_from_db = c.fetchall()
+print(all_temps_from_db)
+date_length = [len(all_temps_from_db)]
+
+
+# collects all temperatures
+for x in range(len(all_temps_from_db)):
+    current_temp = all_temps_from_db[x]
+    prev_temp = all_temps_from_db[x - 1]
+    next_temp = all_temps_from_db[x + 1]
+    if next_temp >= current_temp >= prev_temp:
+        print('Heat wave!')
+
+conn.commit()
+conn.close()

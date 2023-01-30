@@ -1,0 +1,74 @@
+html {
+    background-image: url("static/background.png");
+    font-family: "Lucida Console", "Courier New", monospace;
+    color: #000000;
+    font-size: 160%;
+}
+
+
+
+.grid-container {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: 350px 700px 350px;
+    grid-template-rows: 100px 200px 450px;
+    text-align: center;
+}
+
+
+.grid-item1 {
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+}
+
+.grid-item2 {
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.grid-item3 {
+    padding-top: 20px;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    border-bottom: 4px solid white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+#weatherTitle {font-size: 250%;}
+
+#cloudEnterBtn {
+    height: 40px;
+    width: 40px;
+}
+
+.location-info {
+    padding-bottom: 30px;
+    border-bottom: 3px solid black;
+}
+
+#locationCity {
+    font-size: 170%;
+}
+
+#userSearchBar {
+    padding: 30px;
+    font-size: 130%;
+    background-color: #cad9da;
+}

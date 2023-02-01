@@ -1,18 +1,19 @@
 html {
-    background-image: url("static/background.png");
     font-family: "Lucida Console", "Courier New", monospace;
     color: #000000;
-    font-size: 160%;
+    font-size: 125%;
 }
 
 
 
 .grid-container {
+    background-image: url("static/background.png");
     display: inline-grid;
     grid-auto-flow: column;
     grid-template-columns: 350px 700px 350px;
-    grid-template-rows: 100px 200px 450px;
+    grid-template-rows: 100px 200px 550px;
     text-align: center;
+    background-size: cover;
 }
 
 
@@ -53,6 +54,10 @@ html {
 
 #weatherTitle {font-size: 250%;}
 
+input {
+    text-align: center;
+}
+
 #cloudEnterBtn {
     height: 40px;
     width: 40px;
@@ -60,7 +65,7 @@ html {
 
 .location-info {
     padding-bottom: 30px;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid rgba(118, 117, 117, 0.87);
 }
 
 #locationCity {
@@ -71,4 +76,48 @@ html {
     padding: 30px;
     font-size: 130%;
     background-color: #cad9da;
+}
+
+
+.rainy {
+    background-image: url("static/rain.png");
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: 350px 700px 350px;
+    grid-template-rows: 100px 200px 550px;
+    text-align: center;
+    background-size: cover;
+}
+
+
+.partly-cloudy {
+    background-image: url("static/partlyCloudy.png");
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: 350px 700px 350px;
+    grid-template-rows: 100px 200px 550px;
+    text-align: center;
+    background-size: cover;
+}
+
+
+.overcast {
+    background-image: url("static/overcast.png");
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: 350px 700px 350px;
+    grid-template-rows: 100px 200px 550px;
+    text-align: center;
+    background-size: cover;
+}
+
+
+.sunny {
+    background-image: url("static/sunny.png");
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-template-columns: 350px 700px 350px;
+    grid-template-rows: 100px 200px 550px;
+    text-align: center;
+    background-size: cover;
 }

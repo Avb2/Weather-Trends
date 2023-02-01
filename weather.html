@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" class="normal" id="html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="weather.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div class="grid-container" id="mountHere">
+
+    <div class="grid-item1">
+        <h1 id="weatherTitle">WEATHER</h1>
+    </div>
+
+    <div class="grid-item2">
+        <br><br>
+        <label>
+            <input type="text" id="userSearchBar" placeholder="EX: Atlanta, Ga ,   30215">
+        </label>
+        
+        <br><br>
+        <button @click="searchWeather">
+            <img src="static/cloud.png" alt="Enter button" id="cloudEnterBtn">
+        </button>
+    </div>
+
+    <div class="grid-item3">
+
+        <h2 class="location-info" id="locationCity">
+            {{ locationCity }}
+        </h2>
+
+        <h3 class="location-info" id="locationState">
+            {{ locationState }}
+        </h3>
+
+        <h3>
+            {{ tempHigh }}
+        </h3>
+
+        <h3>
+            {{ sunOrRain }}
+        </h3>
+
+        <h3>
+            {{ windSpeed }}
+        </h3>
+
+        <h3>
+            {{ humidity }}
+        </h3>
+
+    </div>
+
+</div>
+
+<script src="weather.js" type="application/javascript"></script>
+</body>
+</html>
